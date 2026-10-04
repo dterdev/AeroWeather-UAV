@@ -78,20 +78,22 @@
     </footer>
 
 <script>
-    // Завантажуємо збережену мову або ставимо 'uk' за замовчуванням
     let currentLang = localStorage.getItem('lang') || 'uk';
 
-    // Завантаження теми
     const savedTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
-    document.getElementById('theme-toggle').textContent = savedTheme === 'light' ? '☀️' : '🌙';
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+        themeBtn.textContent = savedTheme === 'light' ? '☀️' : '🌙';
+    }
 
     function toggleTheme() {
         const currentTheme = document.documentElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
-        document.getElementById('theme-toggle').textContent = newTheme === 'light' ? '☀️' : '🌙';
+        const btn = document.getElementById('theme-toggle');
+        if (btn) btn.textContent = newTheme === 'light' ? '☀️' : '🌙';
     }
 
     const i18n = {
@@ -137,7 +139,6 @@
         }
     };
 
-    // Безпечний помічник: оновлює текст тільки якщо елемент дійсно знайдено
     function safeSet(id, value, isHTML = false) {
         const el = document.getElementById(id);
         if (!el) return;
@@ -151,6 +152,8 @@
     function applyLanguage(lang) {
         const t = i18n[lang];
         if (!t) return;
+
+        document.documentElement.setAttribute('lang', lang);
 
         safeSet('nav-privacy-link', t.navPrivacy);
         safeSet('lang-toggle', t.langBtn);
@@ -180,10 +183,8 @@
         applyLanguage(currentLang);
     }
 
-    // Застосовуємо актуальну мову при завантаженні сторінки
-    if (currentLang !== 'uk') {
-        applyLanguage(currentLang);
-    }
+    // Инициализация языка при загрузке
+    applyLanguage(currentLang);
 </script>
 
 </body>
