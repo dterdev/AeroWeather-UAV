@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroWeather UAV — Прогноз погоди для БПЛА</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">AeroWeather UAV</a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="privacy-policy.html" id="nav-privacy-link">Політика конфіденційності</a></li>
+                </ul>
+                <button class="lang-btn" id="lang-toggle" onclick="toggleLanguage()">EN</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1 id="hero-title">Прогноз погоди для БПЛА та безпека польотів</h1>
+            <p id="hero-desc">Спеціалізований мобільний додаток для розрахунку безпеки польотів дронів, аналізу висотного вітру, Kp-індексу геомагнітної обстановки та нижньої межі хмарності.</p>
+        </section>
+
+        <section class="features-grid">
+            <div class="feature-card">
+                <h3 id="f1-title">Висотний профіль вітру</h3>
+                <p id="f1-desc">Аналіз швидкості та поривів вітру на высотах від 10м до 3000м (изобаричні рівні 1000hPa - 700hPa).</p>
+            </div>
+
+            <div class="feature-card">
+                <h3 id="f2-title">Kp-індекс та геомагнітні бурі</h3>
+                <p id="f2-desc">Моніторинг сонячної активності NOAA SWPC для запобігання втрати супутників та збоїв GPS/GNSS.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3 id="f3-title">Нижня границя хмар (AGL)</h3>
+                <p id="f3-desc">Розрахунок межі хмарності за формулою Хенніга та аналіз висотних ярусів (Low, Mid, High).</p>
+            </div>
+
+            <div class="feature-card">
+                <h3 id="f4-title">Оцінка безпеки польоту</h3>
+                <p id="f4-desc">Автоматичне зіставлення погодних обмежень для профілів БПЛА з реальним прогнозом.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3 id="f5-title">Інтерактивна карта HD</h3>
+                <p id="f5-desc">Підтримка векторних та супутникових карт Google Maps з вибором точного пункту польоту.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3 id="f6-title">PDF-звіти для вильотів</h3>
+                <p id="f6-desc">Генерація та експорт офіційного зведення метеообстановки у PDF.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="content-card">
+                <h2 id="ds-title">Джерела метеоданих</h2>
+                <p id="ds-desc">Додаток обробляє дані з провідних світових метеорологічних центрів та геодезичних служб:</p>
+                <ul>
+                    <li><strong>Open-Meteo API:</strong> Метеомоделі ECMWF IFS, GFS, ICON та AROME (<a href="https://open-meteo.com/" target="_blank">Open-Meteo.com</a>).</li>
+                    <li><strong>NOAA SWPC:</strong> Прогноз геомагнітної активності (Space Weather Prediction Center, USA).</li>
+                    <li><strong>OpenStreetMap:</strong> База географічних назв та зворотного геокодування.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 AeroWeather UAV. All rights reserved. | Service Provider: D. T. Dev | Contact: <a href="mailto:dtereta@gmail.com">dtereta@gmail.com</a> | <a href="privacy-policy.html">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        let currentLang = 'uk';
+
+        const i18n = {
+            uk: {
+                navPrivacy: "Політика конфіденційності",
+                langBtn: "EN",
+                heroTitle: "Прогноз погоди для БПЛА та безпека польотів",
+                heroDesc: "Спеціалізований мобільний додаток для розрахунку безпеки польотів дронів, аналізу висотного вітру, Kp-індексу геомагнітної обстановки та нижньої межі хмарності.",
+                f1Title: "Висотний профіль вітру",
+                f1Desc: "Аналіз швидкості та поривів вітру на высотах від 10м до 3000м (изобаричні рівні 1000hPa - 700hPa).",
+                f2Title: "Kp-індекс та геомагнітні бурі",
+                f2Desc: "Моніторинг сонячної активності NOAA SWPC для запобігання втрати супутників та збоїв GPS/GNSS.",
+                f3Title: "Нижня границя хмар (AGL)",
+                f3Desc: "Розрахунок межі хмарності за формулою Хенніга та аналіз висотних ярусів (Low, Mid, High).",
+                f4Title: "Оцінка безпеки польоту",
+                f4Desc: "Автоматичне зіставлення погодних обмежень для профілів БПЛА з реальним прогнозом.",
+                f5Title: "Інтерактивна карта HD",
+                f5Desc: "Підтримка векторних та супутникових карт Google Maps з вибором точного пункту польоту.",
+                f6Title: "PDF-звіти для вильотів",
+                f6Desc: "Генерація та експорт офіційного зведення метеообстановки у PDF.",
+                dsTitle: "Джерела метеоданих",
+                dsDesc: "Додаток обробляє дані з провідних світових метеорологічних центрів та геодезичних служб:"
+            },
+            en: {
+                navPrivacy: "Privacy Policy",
+                langBtn: "UA",
+                heroTitle: "UAV Weather Forecast & Flight Safety",
+                heroDesc: "Specialized mobile application for drone flight safety calculation, altitude wind analysis, Kp-index geomagnetic monitoring, and cloud base AGL evaluation.",
+                f1Title: "Altitude Wind Profile",
+                f1Desc: "Wind speed and gust analysis at altitudes from 10m to 3000m (isobaric levels 1000hPa - 700hPa).",
+                f2Title: "Kp-Index & Space Weather",
+                f2Desc: "NOAA SWPC solar activity monitoring to prevent satellite loss and GPS/GNSS interference.",
+                f3Title: "Cloud Base AGL",
+                f3Desc: "Cloud base calculation using Hennig's formula and cloud layer breakdown (Low, Mid, High).",
+                f4Title: "Flight Safety Evaluation",
+                f4Desc: "Automated matching of UAV profile constraints against real-time weather forecasts.",
+                f5Title: "Interactive HD Maps",
+                f5Desc: "Support for Google Maps vector and satellite maps for precise location selection.",
+                f6Title: "PDF Flight Reports",
+                f6Desc: "Generate and export official weather summaries in PDF format.",
+                dsTitle: "Data Sources",
+                dsDesc: "The application processes data from leading global weather forecasting centers and geodesic services:"
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'uk' ? 'en' : 'uk';
+            const t = i18n[currentLang];
+
+            document.getElementById('nav-privacy-link').textContent = t.navPrivacy;
+            document.getElementById('lang-toggle').textContent = t.langBtn;
+            document.getElementById('hero-title').textContent = t.heroTitle;
+            document.getElementById('hero-desc').textContent = t.heroDesc;
+
+            document.getElementById('f1-title').textContent = t.f1Title;
+            document.getElementById('f1-desc').textContent = t.f1Desc;
+            document.getElementById('f2-title').textContent = t.f2Title;
+            document.getElementById('f2-desc').textContent = t.f2Desc;
+            document.getElementById('f3-title').textContent = t.f3Title;
+            document.getElementById('f3-desc').textContent = t.f3Desc;
+            document.getElementById('f4-title').textContent = t.f4Title;
+            document.getElementById('f4-desc').textContent = t.f4Desc;
+            document.getElementById('f5-title').textContent = t.f5Title;
+            document.getElementById('f5-desc').textContent = t.f5Desc;
+            document.getElementById('f6-title').textContent = t.f6Title;
+            document.getElementById('f6-desc').textContent = t.f6Desc;
+
+            document.getElementById('ds-title').textContent = t.dsTitle;
+            document.getElementById('ds-desc').textContent = t.dsDesc;
+        }
+    </script>
+
+</body>
+</html>
