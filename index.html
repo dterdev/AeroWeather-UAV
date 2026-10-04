@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AeroWeather UAV — Прогноз погоди для БПЛА</title>
+    <title>AeroWeather UAV — Прогноз погоди для БПЛА та безпека польотів</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,56 +15,59 @@
                 <ul class="nav-links">
                     <li><a href="privacy-policy.html" id="nav-privacy-link">Політика конфіденційності</a></li>
                 </ul>
-                <button class="lang-btn" id="lang-toggle" onclick="toggleLanguage()">EN</button>
+                <button class="action-btn" id="theme-toggle" onclick="toggleTheme()" title="Змінити тему">🌙</button>
+                <button class="action-btn" id="lang-toggle" onclick="toggleLanguage()">EN</button>
             </div>
         </div>
     </header>
 
     <main>
         <section class="hero">
-            <h1 id="hero-title">Прогноз погоди для БПЛА та безпека польотів</h1>
-            <p id="hero-desc">Спеціалізований мобільний додаток для розрахунку безпеки польотів дронів, аналізу висотного вітру, Kp-індексу геомагнітної обстановки та нижньої межі хмарності.</p>
+            <div class="hero-pill" id="hero-pill-text">Професійна аеронавігація для БПЛА</div>
+            <h1 id="hero-title">Прогноз погоди для БПЛА та <span>безпека польотів</span></h1>
+            <p id="hero-desc">Спеціалізований мобільний додаток для розрахунку безпеки польотів дронів, аналізу висотного вітру, Kp-індексу геомагнітної обстановки та ярусів хмарності.</p>
         </section>
 
         <section class="features-grid">
             <div class="feature-card">
                 <h3 id="f1-title">Висотний профіль вітру</h3>
-                <p id="f1-desc">Аналіз швидкості та поривів вітру на высотах від 10м до 3000м (изобаричні рівні 1000hPa - 700hPa).</p>
+                <p id="f1-desc">Аналіз швидкості та поривів вітру на висотах від 10м до 3000м (изобаричні рівні 1000hPa - 700hPa).</p>
             </div>
 
             <div class="feature-card">
                 <h3 id="f2-title">Kp-індекс та геомагнітні бурі</h3>
-                <p id="f2-desc">Моніторинг сонячної активності NOAA SWPC для запобігання втрати супутників та збоїв GPS/GNSS.</p>
+                <p id="f2-desc">Моніторинг сонячної активності NOAA SWPC у реальному часі для запобігання втрати супутників та збоїв GPS/GNSS.</p>
             </div>
 
             <div class="feature-card">
-                <h3 id="f3-title">Нижня границя хмар (AGL)</h3>
-                <p id="f3-desc">Розрахунок межі хмарності за формулою Хенніга та аналіз висотних ярусів (Low, Mid, High).</p>
+                <h3 id="f3-title">Яруси хмарності</h3>
+                <p id="f3-desc">Деталізований розрахунок покриття для трьох атмосферних ярусів (Low, Mid, High) та загальної хмарності.</p>
             </div>
 
             <div class="feature-card">
                 <h3 id="f4-title">Оцінка безпеки польоту</h3>
-                <p id="f4-desc">Автоматичне зіставлення погодних обмежень для профілів БПЛА з реальним прогнозом.</p>
+                <p id="f4-desc">Автоматичне зіставлення погодних обмежень для профілів БПЛА (DJI, Autel, FPV, Лелека, Фурія та ін.) з реальним прогнозом.</p>
             </div>
 
             <div class="feature-card">
                 <h3 id="f5-title">Інтерактивна карта HD</h3>
-                <p id="f5-desc">Підтримка векторних та супутникових карт Google Maps з вибором точного пункту польоту.</p>
+                <p id="f5-desc">Підтримка векторних та супутникових карт Mapbox HD з вибором точного пункту польоту та україномовними локаціями.</p>
             </div>
 
             <div class="feature-card">
                 <h3 id="f6-title">PDF-звіти для вильотів</h3>
-                <p id="f6-desc">Генерація та експорт офіційного зведення метеообстановки у PDF.</p>
+                <p id="f6-desc">Генерація та експорт офіційного зведення метеообстановки у форматі PDF</p>
             </div>
         </section>
 
         <section class="content-section">
             <div class="content-card">
-                <h2 id="ds-title">Джерела метеоданих</h2>
+                <h2 id="ds-title">Джерела метеоданих та картографії</h2>
                 <p id="ds-desc">Додаток обробляє дані з провідних світових метеорологічних центрів та геодезичних служб:</p>
                 <ul>
                     <li><strong>Open-Meteo API:</strong> Метеомоделі ECMWF IFS, GFS, ICON та AROME (<a href="https://open-meteo.com/" target="_blank">Open-Meteo.com</a>).</li>
-                    <li><strong>NOAA SWPC:</strong> Прогноз геомагнітної активності (Space Weather Prediction Center, USA).</li>
+                    <li><strong>NOAA SWPC:</strong> Прогноз та реальні виміри геомагнітної активності (Space Weather Prediction Center, USA).</li>
+                    <li><strong>Mapbox:</strong> Векторні та супутникові тайли карти високої роздільної здатності (<a href="https://www.mapbox.com/" target="_blank">Mapbox.com</a>).</li>
                     <li><strong>OpenStreetMap:</strong> База географічних назв та зворотного геокодування.</li>
                 </ul>
             </div>
@@ -78,45 +81,60 @@
     <script>
         let currentLang = 'uk';
 
+        // Load theme from localStorage or default to dark
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.getElementById('theme-toggle').textContent = savedTheme === 'light' ? '☀️' : '🌙';
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            document.getElementById('theme-toggle').textContent = newTheme === 'light' ? '☀️' : '🌙';
+        }
+
         const i18n = {
             uk: {
                 navPrivacy: "Політика конфіденційності",
                 langBtn: "EN",
-                heroTitle: "Прогноз погоди для БПЛА та безпека польотів",
-                heroDesc: "Спеціалізований мобільний додаток для розрахунку безпеки польотів дронів, аналізу висотного вітру, Kp-індексу геомагнітної обстановки та нижньої межі хмарності.",
+                heroPill: "Професійна аеронавігація для БПЛА",
+                heroTitle: "Прогноз погоди для БПЛА та <span>безпека польотів</span>",
+                heroDesc: "Спеціалізований мобільний додаток для розрахунку безпеки польотів дронів, аналізу висотного вітру, Kp-індексу геомагнітної обстановки та ярусів хмарності.",
                 f1Title: "Висотний профіль вітру",
-                f1Desc: "Аналіз швидкості та поривів вітру на высотах від 10м до 3000м (изобаричні рівні 1000hPa - 700hPa).",
+                f1Desc: "Аналіз швидкості та поривів вітру на висотах від 10м до 3000м (изобаричні рівні 1000hPa - 700hPa).",
                 f2Title: "Kp-індекс та геомагнітні бурі",
-                f2Desc: "Моніторинг сонячної активності NOAA SWPC для запобігання втрати супутників та збоїв GPS/GNSS.",
-                f3Title: "Нижня границя хмар (AGL)",
-                f3Desc: "Розрахунок межі хмарності за формулою Хенніга та аналіз висотних ярусів (Low, Mid, High).",
+                f2Desc: "Моніторинг сонячної активності NOAA SWPC у реальному часі для запобігання втрати супутників та збоїв GPS/GNSS.",
+                f3Title: "Яруси хмарності",
+                f3Desc: "Деталізований розрахунок покриття для трьох атмосферних ярусів (Low, Mid, High) та загальної хмарності.",
                 f4Title: "Оцінка безпеки польоту",
-                f4Desc: "Автоматичне зіставлення погодних обмежень для профілів БПЛА з реальним прогнозом.",
+                f4Desc: "Автоматичне зіставлення погодних обмежень для профілів БПЛА (DJI, Autel, FPV, Лелека, Фурія та ін.) з реальним прогнозом.",
                 f5Title: "Інтерактивна карта HD",
-                f5Desc: "Підтримка векторних та супутникових карт Google Maps з вибором точного пункту польоту.",
+                f5Desc: "Підтримка векторних та супутникових карт Mapbox HD з вибором точного пункту польоту та україномовними локаціями.",
                 f6Title: "PDF-звіти для вильотів",
-                f6Desc: "Генерація та експорт офіційного зведення метеообстановки у PDF.",
-                dsTitle: "Джерела метеоданих",
+                f6Desc: "Генерація та експорт офіційного зведення метеообстановки у форматі PDF",
+                dsTitle: "Джерела метеоданих та картографії",
                 dsDesc: "Додаток обробляє дані з провідних світових метеорологічних центрів та геодезичних служб:"
             },
             en: {
                 navPrivacy: "Privacy Policy",
                 langBtn: "UA",
-                heroTitle: "UAV Weather Forecast & Flight Safety",
-                heroDesc: "Specialized mobile application for drone flight safety calculation, altitude wind analysis, Kp-index geomagnetic monitoring, and cloud base AGL evaluation.",
+                heroPill: "Professional UAV Aviation Navigation",
+                heroTitle: "UAV Weather Forecast & <span>Flight Safety</span>",
+                heroDesc: "Specialized mobile application for drone flight safety calculation, altitude wind analysis, Kp-index geomagnetic monitoring, and cloud layer evaluation.",
                 f1Title: "Altitude Wind Profile",
                 f1Desc: "Wind speed and gust analysis at altitudes from 10m to 3000m (isobaric levels 1000hPa - 700hPa).",
                 f2Title: "Kp-Index & Space Weather",
-                f2Desc: "NOAA SWPC solar activity monitoring to prevent satellite loss and GPS/GNSS interference.",
-                f3Title: "Cloud Base AGL",
-                f3Desc: "Cloud base calculation using Hennig's formula and cloud layer breakdown (Low, Mid, High).",
+                f2Desc: "NOAA SWPC real-time solar activity monitoring to prevent satellite loss and GPS/GNSS interference.",
+                f3Title: "Cloud Layer Analysis",
+                f3Desc: "Detailed coverage calculation for three atmospheric cloud tiers (Low, Mid, High) and total cloud cover.",
                 f4Title: "Flight Safety Evaluation",
-                f4Desc: "Automated matching of UAV profile constraints against real-time weather forecasts.",
+                f4Desc: "Automated matching of UAV profile constraints (DJI, Autel, FPV, Leleka, Furia, etc.) against real-time forecasts.",
                 f5Title: "Interactive HD Maps",
-                f5Desc: "Support for Google Maps vector and satellite maps for precise location selection.",
+                f5Desc: "Support for Mapbox HD vector and satellite maps for precise location selection with localized place names.",
                 f6Title: "PDF Flight Reports",
-                f6Desc: "Generate and export official weather summaries in PDF format.",
-                dsTitle: "Data Sources",
+                f6Desc: "Generate and export official weather summaries in PDF format",
+                dsTitle: "Data Sources & Maps",
                 dsDesc: "The application processes data from leading global weather forecasting centers and geodesic services:"
             }
         };
@@ -127,7 +145,8 @@
 
             document.getElementById('nav-privacy-link').textContent = t.navPrivacy;
             document.getElementById('lang-toggle').textContent = t.langBtn;
-            document.getElementById('hero-title').textContent = t.heroTitle;
+            document.getElementById('hero-pill-text').textContent = t.heroPill;
+            document.getElementById('hero-title').innerHTML = t.heroTitle;
             document.getElementById('hero-desc').textContent = t.heroDesc;
 
             document.getElementById('f1-title').textContent = t.f1Title;
