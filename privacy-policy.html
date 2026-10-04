@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,9 +13,10 @@
             <a href="index.html" class="logo">AeroWeather UAV</a>
             <div class="nav-right">
                 <ul class="nav-links">
-                    <li><a href="privacy-policy.html" style="color: var(--emerald-accent);" id="nav-privacy">Політика конфіденційності</a></li>
+                    <li><a href="privacy-policy.html" style="color: var(--accent-primary);" id="nav-privacy">Політика конфіденційності</a></li>
                 </ul>
-                <button class="lang-btn" id="lang-toggle" onclick="toggleLanguage()">EN</button>
+                <button class="action-btn" id="theme-toggle" onclick="toggleTheme()" title="Змінити тему">🌙</button>
+                <button class="action-btn" id="lang-toggle" onclick="toggleLanguage()">EN</button>
             </div>
         </div>
     </header>
@@ -75,6 +76,10 @@
             <ul>
                 <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
                 <li><a href="https://firebase.google.com/policies/analytics" target="_blank">Google Analytics for Firebase</a></li>
+                <li><a href="https://open-meteo.com/en/features#terms" target="_blank">Open-Meteo (Meteo Weather API)</a></li>
+                <li><a href="https://www.mapbox.com/legal/privacy" target="_blank">Mapbox (Map Tiles & Search)</a></li>
+                <li><a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank">OpenStreetMap Foundation (Map Data)</a></li>
+                <li><a href="https://www.noaa.gov/protecting-your-privacy" target="_blank">NOAA Space Weather Prediction Center (Geomagnetic Space Weather)</a></li>
             </ul>
 
             <p>Постачальник послуг може розкривати інформацію, надану користувачем та зібрану автоматично:</p>
@@ -179,6 +184,10 @@
             <ul>
                 <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
                 <li><a href="https://firebase.google.com/policies/analytics" target="_blank">Google Analytics for Firebase</a></li>
+                <li><a href="https://open-meteo.com/en/features#terms" target="_blank">Open-Meteo (Meteo Weather API)</a></li>
+                <li><a href="https://www.mapbox.com/legal/privacy" target="_blank">Mapbox (Map Tiles & Search)</a></li>
+                <li><a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank">OpenStreetMap Foundation (Map Data)</a></li>
+                <li><a href="https://www.noaa.gov/protecting-your-privacy" target="_blank">NOAA Space Weather Prediction Center (Geomagnetic Space Weather)</a></li>
             </ul>
 
             <p>The Service Provider may disclose User Provided and Automatically Collected Information:</p>
@@ -236,6 +245,19 @@
 
     <script>
         let currentLang = 'uk';
+
+        // Load theme from localStorage or default to dark
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.getElementById('theme-toggle').textContent = savedTheme === 'light' ? '☀️' : '🌙';
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            document.getElementById('theme-toggle').textContent = newTheme === 'light' ? '☀️' : '🌙';
+        }
 
         function toggleLanguage() {
             const ukCard = document.getElementById('policy-uk');
