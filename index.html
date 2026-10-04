@@ -77,92 +77,114 @@
         <p>&copy; 2026 AeroWeather UAV. All rights reserved. | Service Provider: D. T. Dev | Contact: <a href="mailto:dterdev@gmail.com">dterdev@gmail.com</a> | <a href="privacy-policy.html">Privacy Policy</a></p>
     </footer>
 
-    <script>
-        let currentLang = 'uk';
+<script>
+    // Завантажуємо збережену мову або ставимо 'uk' за замовчуванням
+    let currentLang = localStorage.getItem('lang') || 'uk';
 
-        // Load theme from localStorage or default to dark
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        document.getElementById('theme-toggle').textContent = savedTheme === 'light' ? '☀️' : '🌙';
+    // Завантаження теми
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.getElementById('theme-toggle').textContent = savedTheme === 'light' ? '☀️' : '🌙';
 
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            document.getElementById('theme-toggle').textContent = newTheme === 'light' ? '☀️' : '🌙';
+    function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        document.getElementById('theme-toggle').textContent = newTheme === 'light' ? '☀️' : '🌙';
+    }
+
+    const i18n = {
+        uk: {
+            navPrivacy: "Політика конфіденційності",
+            langBtn: "EN",
+            heroTitle: "Прогноз погоди для БПЛА та <span>безпека польотів</span>",
+            heroDesc: "Спеціалізований мобільний додаток для розрахунку безпеки польотів дронів, аналізу висотного вітру, Kp-індексу геомагнітної обстановки та ярусів хмарності.",
+            f1Title: "Висотний профіль вітру",
+            f1Desc: "Аналіз швидкості та поривів вітру на висотах від 10м до 3000м (изобаричні рівні 1000hPa - 700hPa).",
+            f2Title: "Kp-індекс та геомагнітні бурі",
+            f2Desc: "Моніторинг сонячної активності NOAA SWPC у реальному часі для запобігання втрати супутників та збоїв GPS/GNSS.",
+            f3Title: "Яруси хмарності",
+            f3Desc: "Деталізований розрахунок покриття для трьох атмосферних ярусів (Low, Mid, High) та загальної хмарності.",
+            f4Title: "Оцінка безпеки польоту",
+            f4Desc: "Автоматичне зіставлення погодних обмежень для профілів БПЛА (DJI, Autel, FPV, Лелека, Фурія та ін.) з реальним прогнозом.",
+            f5Title: "Інтерактивна карта HD",
+            f5Desc: "Підтримка векторних та супутникових карт Mapbox HD з вибором точного пункту польоту та україномовними локаціями.",
+            f6Title: "PDF-звіти для вильотів",
+            f6Desc: "Генерація та експорт офіційного зведення метеообстановки у форматі PDF",
+            dsTitle: "Джерела метеоданих та картографії",
+            dsDesc: "Додаток обробляє дані з провідних світових метеорологічних центрів та геодезичних служб:"
+        },
+        en: {
+            navPrivacy: "Privacy Policy",
+            langBtn: "UA",
+            heroTitle: "UAV Weather Forecast & <span>Flight Safety</span>",
+            heroDesc: "Specialized mobile application for drone flight safety calculation, altitude wind analysis, Kp-index geomagnetic monitoring, and cloud layer evaluation.",
+            f1Title: "Altitude Wind Profile",
+            f1Desc: "Wind speed and gust analysis at altitudes from 10m to 3000m (isobaric levels 1000hPa - 700hPa).",
+            f2Title: "Kp-Index & Space Weather",
+            f2Desc: "NOAA SWPC real-time solar activity monitoring to prevent satellite loss and GPS/GNSS interference.",
+            f3Title: "Cloud Layer Analysis",
+            f3Desc: "Detailed coverage calculation for three atmospheric cloud tiers (Low, Mid, High) and total cloud cover.",
+            f4Title: "Flight Safety Evaluation",
+            f4Desc: "Automated matching of UAV profile constraints (DJI, Autel, FPV, Leleka, Furia, etc.) against real-time forecasts.",
+            f5Title: "Interactive HD Maps",
+            f5Desc: "Support for Mapbox HD vector and satellite maps for precise location selection with localized place names.",
+            f6Title: "PDF Flight Reports",
+            f6Desc: "Generate and export official weather summaries in PDF format",
+            dsTitle: "Data Sources & Maps",
+            dsDesc: "The application processes data from leading global weather forecasting centers and geodesic services:"
         }
+    };
 
-        const i18n = {
-            uk: {
-                navPrivacy: "Політика конфіденційності",
-                langBtn: "EN",
-                heroPill: "Професійна аеронавігація для БПЛА",
-                heroTitle: "Прогноз погоди для БПЛА та <span>безпека польотів</span>",
-                heroDesc: "Спеціалізований мобільний додаток для розрахунку безпеки польотів дронів, аналізу висотного вітру, Kp-індексу геомагнітної обстановки та ярусів хмарності.",
-                f1Title: "Висотний профіль вітру",
-                f1Desc: "Аналіз швидкості та поривів вітру на висотах від 10м до 3000м (изобаричні рівні 1000hPa - 700hPa).",
-                f2Title: "Kp-індекс та геомагнітні бурі",
-                f2Desc: "Моніторинг сонячної активності NOAA SWPC у реальному часі для запобігання втрати супутників та збоїв GPS/GNSS.",
-                f3Title: "Яруси хмарності",
-                f3Desc: "Деталізований розрахунок покриття для трьох атмосферних ярусів (Low, Mid, High) та загальної хмарності.",
-                f4Title: "Оцінка безпеки польоту",
-                f4Desc: "Автоматичне зіставлення погодних обмежень для профілів БПЛА (DJI, Autel, FPV, Лелека, Фурія та ін.) з реальним прогнозом.",
-                f5Title: "Інтерактивна карта HD",
-                f5Desc: "Підтримка векторних та супутникових карт Mapbox HD з вибором точного пункту польоту та україномовними локаціями.",
-                f6Title: "PDF-звіти для вильотів",
-                f6Desc: "Генерація та експорт офіційного зведення метеообстановки у форматі PDF",
-                dsTitle: "Джерела метеоданих та картографії",
-                dsDesc: "Додаток обробляє дані з провідних світових метеорологічних центрів та геодезичних служб:"
-            },
-            en: {
-                navPrivacy: "Privacy Policy",
-                langBtn: "UA",
-                heroTitle: "UAV Weather Forecast & <span>Flight Safety</span>",
-                heroDesc: "Specialized mobile application for drone flight safety calculation, altitude wind analysis, Kp-index geomagnetic monitoring, and cloud layer evaluation.",
-                f1Title: "Altitude Wind Profile",
-                f1Desc: "Wind speed and gust analysis at altitudes from 10m to 3000m (isobaric levels 1000hPa - 700hPa).",
-                f2Title: "Kp-Index & Space Weather",
-                f2Desc: "NOAA SWPC real-time solar activity monitoring to prevent satellite loss and GPS/GNSS interference.",
-                f3Title: "Cloud Layer Analysis",
-                f3Desc: "Detailed coverage calculation for three atmospheric cloud tiers (Low, Mid, High) and total cloud cover.",
-                f4Title: "Flight Safety Evaluation",
-                f4Desc: "Automated matching of UAV profile constraints (DJI, Autel, FPV, Leleka, Furia, etc.) against real-time forecasts.",
-                f5Title: "Interactive HD Maps",
-                f5Desc: "Support for Mapbox HD vector and satellite maps for precise location selection with localized place names.",
-                f6Title: "PDF Flight Reports",
-                f6Desc: "Generate and export official weather summaries in PDF format",
-                dsTitle: "Data Sources & Maps",
-                dsDesc: "The application processes data from leading global weather forecasting centers and geodesic services:"
-            }
-        };
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'uk' ? 'en' : 'uk';
-            const t = i18n[currentLang];
-
-            document.getElementById('nav-privacy-link').textContent = t.navPrivacy;
-            document.getElementById('lang-toggle').textContent = t.langBtn;
-            document.getElementById('hero-title').innerHTML = t.heroTitle;
-            document.getElementById('hero-desc').textContent = t.heroDesc;
-
-            document.getElementById('f1-title').textContent = t.f1Title;
-            document.getElementById('f1-desc').textContent = t.f1Desc;
-            document.getElementById('f2-title').textContent = t.f2Title;
-            document.getElementById('f2-desc').textContent = t.f2Desc;
-            document.getElementById('f3-title').textContent = t.f3Title;
-            document.getElementById('f3-desc').textContent = t.f3Desc;
-            document.getElementById('f4-title').textContent = t.f4Title;
-            document.getElementById('f4-desc').textContent = t.f4Desc;
-            document.getElementById('f5-title').textContent = t.f5Title;
-            document.getElementById('f5-desc').textContent = t.f5Desc;
-            document.getElementById('f6-title').textContent = t.f6Title;
-            document.getElementById('f6-desc').textContent = t.f6Desc;
-
-            document.getElementById('ds-title').textContent = t.dsTitle;
-            document.getElementById('ds-desc').textContent = t.dsDesc;
+    // Безпечний помічник: оновлює текст тільки якщо елемент дійсно знайдено
+    function safeSet(id, value, isHTML = false) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (isHTML) {
+            el.innerHTML = value;
+        } else {
+            el.textContent = value;
         }
-    </script>
+    }
+
+    function applyLanguage(lang) {
+        const t = i18n[lang];
+        if (!t) return;
+
+        safeSet('nav-privacy-link', t.navPrivacy);
+        safeSet('lang-toggle', t.langBtn);
+        safeSet('hero-title', t.heroTitle, true);
+        safeSet('hero-desc', t.heroDesc);
+
+        safeSet('f1-title', t.f1Title);
+        safeSet('f1-desc', t.f1Desc);
+        safeSet('f2-title', t.f2Title);
+        safeSet('f2-desc', t.f2Desc);
+        safeSet('f3-title', t.f3Title);
+        safeSet('f3-desc', t.f3Desc);
+        safeSet('f4-title', t.f4Title);
+        safeSet('f4-desc', t.f4Desc);
+        safeSet('f5-title', t.f5Title);
+        safeSet('f5-desc', t.f5Desc);
+        safeSet('f6-title', t.f6Title);
+        safeSet('f6-desc', t.f6Desc);
+
+        safeSet('ds-title', t.dsTitle);
+        safeSet('ds-desc', t.dsDesc);
+    }
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'uk' ? 'en' : 'uk';
+        localStorage.setItem('lang', currentLang);
+        applyLanguage(currentLang);
+    }
+
+    // Застосовуємо актуальну мову при завантаженні сторінки
+    if (currentLang !== 'uk') {
+        applyLanguage(currentLang);
+    }
+</script>
 
 </body>
 </html>
